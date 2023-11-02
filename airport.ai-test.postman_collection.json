@@ -1,0 +1,191 @@
+{
+    "info": {
+        "_postman_id": "b31fedce-0dcd-430d-b9d4-1e3162658c0d",
+        "name": "airport.ai-test",
+        "schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+        "_exporter_id": "992231"
+    },
+    "item": [
+        {
+            "name": "products",
+            "item": [
+                {
+                    "name": "products",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": "{{api_url}}/products"
+                    },
+                    "response": []
+                },
+                {
+                    "name": "products - search",
+                    "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                    },
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": "{{api_url}}/products/search"
+                    },
+                    "response": []
+                },
+                {
+                    "name": "products",
+                    "request": {
+                        "method": "DELETE",
+                        "header": [],
+                        "url": "{{api_url}}/products/{{productId}}"
+                    },
+                    "response": []
+                },
+                {
+                    "name": "products",
+                    "request": {
+                        "method": "POST",
+                        "header": [],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\r\n    \"type\": \"celular\",\r\n    \"brand\": \"Samsumg\",\r\n    \"color\": \"Black\",\r\n    \"description\": \"Samsumg S20 Fold da Michelle\",\r\n    \"lostTime\": \"2023-11-02T17:54:45.068Z\"\r\n}",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": "{{api_url}}/products"
+                    },
+                    "response": []
+                }
+            ],
+            "auth": {
+                "type": "bearer",
+                "bearer": {
+                    "token": "{{token}}"
+                }
+            },
+            "event": [
+                {
+                    "listen": "prerequest",
+                    "script": {
+                        "type": "text/javascript",
+                        "exec": [
+                            ""
+                        ]
+                    }
+                },
+                {
+                    "listen": "test",
+                    "script": {
+                        "type": "text/javascript",
+                        "exec": [
+                            ""
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "name": "agents",
+            "item": [
+                {
+                    "name": "agents",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": "{{api_url}}/agents"
+                    },
+                    "response": []
+                }
+            ]
+        },
+        {
+            "name": "auth",
+            "item": [
+                {
+                    "name": "login",
+                    "event": [
+                        {
+                            "listen": "test",
+                            "script": {
+                                "exec": [
+                                    "var res = pm.response.json();\r",
+                                    "pm.collectionVariables.set('token', res.token);"
+                                ],
+                                "type": "text/javascript"
+                            }
+                        }
+                    ],
+                    "request": {
+                        "method": "POST",
+                        "header": [],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\r\n    \"username\": \"lvendrame\",\r\n    \"password\": \"lvendrame01\"\r\n}",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": "{{api_url}}/login"
+                    },
+                    "response": []
+                }
+            ]
+        },
+        {
+            "name": "root",
+            "request": {
+                "method": "GET",
+                "header": [],
+                "url": "{{api_url}}/"
+            },
+            "response": []
+        }
+    ],
+    "event": [
+        {
+            "listen": "prerequest",
+            "script": {
+                "type": "text/javascript",
+                "exec": [
+                    ""
+                ]
+            }
+        },
+        {
+            "listen": "test",
+            "script": {
+                "type": "text/javascript",
+                "exec": [
+                    ""
+                ]
+            }
+        }
+    ],
+    "variable": [
+        {
+            "key": "api_url",
+            "value": "http://localhost:3000",
+            "type": "string"
+        },
+        {
+            "key": "productId",
+            "value": "6544261e74f1c454e6926acb"
+        },
+        {
+            "key": "token",
+            "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhZ2VudElkIjoiNjU0NDI2MWU3NGYxYzQ1NGU2OTI2YWM1IiwiaWF0IjoxNjk4OTY1NDMxLCJleHAiOjE2OTg5NjkwMzF9.KvrFCRv85FR7vVFzfrBPWkft19s4dZLQ7HeAN3i7M04"
+        }
+    ]
+}

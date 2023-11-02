@@ -2,7 +2,7 @@
     "name": "node-js-skeleton",
     "version": "1.0.0",
     "scripts": {
-        "dev": "node --watch app.js",
+        "dev": "node --watch --env-file .env app.js",
         "start": "node app.js",
         "seed": "node ./seed/index.js",
         "test": "NODE_ENV=test mocha --recursive --inspect --exit test",
