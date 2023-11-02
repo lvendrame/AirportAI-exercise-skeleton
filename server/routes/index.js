@@ -3,10 +3,18 @@
 */
 'use strict';
 
-let express = require('express');
-let router = express.Router();
+const express = require('express');
+const router = express.Router();
 
-// To confirm setup only.
-router.get('/', function(req, res) { return res.send('Hello world!'); });
+const authorization = require('../middlewares/authorization');
+
+const products = require('./products');
+const agents = require('./agents');
+const login = require('./login');
+
+router.get('/', function (req, res) { return res.send('Hello world!'); });
+router.use('/products', authorization, products);
+router.use('/agents', agents);
+router.use('/login', login);
 
 module.exports = router;

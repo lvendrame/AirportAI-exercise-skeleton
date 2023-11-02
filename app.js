@@ -16,8 +16,8 @@ require('./server/setup/mongoose')();
 app.use('/', require('./server/routes'));
 
 // Start app.
-app.listen(PORT, function() {
-  console.log('App now listening on port ' + PORT);
+app.listen(PORT, function () {
+    console.log('App now listening on port ' + PORT);
 });
 
 module.exports = app;

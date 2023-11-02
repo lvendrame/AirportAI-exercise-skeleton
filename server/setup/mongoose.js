@@ -4,7 +4,7 @@
 'use strict';
 
 let mongoose = require('mongoose');
-const DATABASE_URL = 'mongodb://127.0.0.1:27017/AirportAI';
+const DATABASE_URL = process.env.DATABASE_URI || 'mongodb://127.0.0.1:27017/AirportAI';
 
 
 module.exports = setup;
@@ -20,7 +20,8 @@ function setup() {
   mongoose.connection.on('open', function () {
     console.log('MongoDB connection opened!');
   });
-  mongoose.connection.on('error', function () {
+  mongoose.connection.on('error', function (err) {
+    console.error('###' + err);
     console.error('MongoDB connection error! Disconnecting...');
     mongoose.disconnect();
   });
@@ -35,10 +36,11 @@ function setup() {
     console.error('MongoDB closed!');
   });
 
-  return connectToDb().then(function() {
+  return connectToDb().then(function () {
 
     // Set up all models.
-    require('../models');
+    // Set up all models.
+    require('../models').default;
     return;
   });
 };
@@ -67,7 +69,7 @@ function connectToDb() {
   };
 
   // Connect and return promise.
-  return mongoose.connect(DATABASE_URL, mongoConnectOpts).catch(function(err) {
+  return mongoose.connect(DATABASE_URL, mongoConnectOpts).catch(function (err) {
     // To avoid promise not handled exception.
     console.error('Unable to connect MongoDB. If problem persists, please restart the server. Error: ' + err);
   });
