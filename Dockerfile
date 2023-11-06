@@ -9,6 +9,9 @@ RUN npm install
 
 COPY . .
 
+ENV DATABASE_URL=mongodb://127.0.0.1:27017/AirportAI
+ENV AUTH_SECRET_KEY=A1B2C3D4E5F6G7H8I9J0K
+
 EXPOSE 3000
 
-CMD ["npm", "start"]
+CMD npm run seed; npm start

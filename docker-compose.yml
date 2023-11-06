@@ -4,14 +4,13 @@ services:
   mongodb:
     build:
       context: .
-      dockerfile: MongoDockerfile
+      dockerfile: ./mongodb/Dockerfile
     ports:
       - "27017:27017"
     volumes:
       - mongo-data:/data/db
-    environment:
-      MONGO_INITDB_ROOT_USERNAME: root
-      MONGO_INITDB_ROOT_PASSWORD: password
+    networks:
+      - AirportAI
 
   api:
     build:
@@ -20,9 +19,16 @@ services:
     ports:
       - "3000:3000"
     environment:
-      DATABASE_URL: mongodb://root:password@mongodb:27017/AirportAI
+      DATABASE_URL: mongodb://mongodb:27017/AirportAI
+      AUTH_SECRET_KEY: A1B2C3D4E5F6G7H8I9J0K
+    networks:
+      - AirportAI
     depends_on:
       - mongodb
+
+networks:
+    AirportAI:
+        name: mongodb
 
 volumes:
   mongo-data:

@@ -35,7 +35,26 @@
                                 }
                             }
                         },
-                        "url": "{{api_url}}/products/search"
+                        "url": {
+                            "raw": "{{api_url}}/products/search?keywords=Meu samsung fold&lostTime=2023-01-02T12:30:00.000Z",
+                            "host": [
+                                "{{api_url}}"
+                            ],
+                            "path": [
+                                "products",
+                                "search"
+                            ],
+                            "query": [
+                                {
+                                    "key": "keywords",
+                                    "value": "Meu samsung fold"
+                                },
+                                {
+                                    "key": "lostTime",
+                                    "value": "2023-01-02T12:30:00.000Z"
+                                }
+                            ]
+                        }
                     },
                     "response": []
                 },
@@ -181,7 +200,7 @@
         },
         {
             "key": "productId",
-            "value": "6544261e74f1c454e6926acb"
+            "value": "123"
         },
         {
             "key": "token",
