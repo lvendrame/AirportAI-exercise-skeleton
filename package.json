@@ -5,10 +5,11 @@
         "dev": "node --watch --env-file .env app.js",
         "start": "node app.js",
         "seed": "node ./seed/index.js",
-        "test": "NODE_ENV=test mocha --recursive --inspect --exit test",
-        "test-win": "set NODE_ENV=test&& mocha --recursive --inspect --exit test"
+        "test": "NODE_ENV=test mocha --recursive --inspect --exit test -- --env-file .env",
+        "test-win": "set NODE_ENV=test&& mocha --recursive --inspect --exit test -- --env-file .env"
     },
     "dependencies": {
+        "bunyan": "^1.8.15",
         "express": "^4.17.3",
         "express-validator": "^7.0.1",
         "helmet": "4.5.0",
@@ -25,6 +26,7 @@
         "chai": "^4.1.2",
         "eslint": "7.24.0",
         "mocha": "10.0.0",
-        "sinon": "10.0.1"
+        "sinon": "10.0.1",
+        "supertest": "^6.3.3"
     }
 }
